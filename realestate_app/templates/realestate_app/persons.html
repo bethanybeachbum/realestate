@@ -1,0 +1,25 @@
+<!-- PERSONS.HTML -->
+
+{% extends "realestate_app/base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    {% block title %}<title>List of Persons</title>{% endblock %}
+</head>
+
+    <h1>Person List</h1>
+    {% if person_list %}
+    <ul>
+        {% for person in person_list %}
+        <li>
+            <p>{{ person.first_name }}   {{ person.last_name}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>There are no people in the list.</p>
+    {% endif %}
+
+    <p>Back to <a href="/">Home</a></p>
+{% endblock content %}

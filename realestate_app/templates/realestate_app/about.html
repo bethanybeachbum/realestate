@@ -1,0 +1,23 @@
+<!--   about.html  -->
+{% extends "realestate_app/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+<h1>About "Real Deal" Application</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+  <h4>Real Deal was developed by Mark Brown to enhance the </h4>
+  <h4>ability of realtors, real estate investors, and buyers </h4>
+  <h4> and sellers of real estate to obtain more accurate and </h4>
+  <h4>in depth pertinent information on real estate properties</h4>
+  <h4>across the United States.</h4>
+
+  <img src="../static/mbrown.jpeg" alt="Girl in a jacket" style="width:250px;height:300px;">
+
+<div class="callout">
+<h5><a href="{% url 'realestate_app:new_contract' %}"> Add a new contract</a></h5>
+</div>
+<p>Back to <a href="/">Home</a></p>
+  {% endblock content %}

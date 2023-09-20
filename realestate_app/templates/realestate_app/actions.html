@@ -1,0 +1,23 @@
+<!-- actions.HTML -->
+
+{% extends "realestate_app/base.html" %}
+
+{% block content %}
+
+<p>ACTIONS</p>
+<P>Here is a list of all actions for all contracts: </P>
+
+<ul>
+    {% for action in actions  %}
+        <li>{{ action }}</li>
+    {% empty %}
+        <li> No actions have been added yet.</li>
+    {% endfor %}
+
+</ul>
+
+
+<p>Back to <a href="/">Home</a></p>
+<p>Remember:  The Real Deal helps you track and complete the actions to quickly close real estate deals. </p> 
+
+{% endblock content %}

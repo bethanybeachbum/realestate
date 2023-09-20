@@ -1,0 +1,21 @@
+
+{% extends "realestate_app/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+<h2>Enter property that you are searching for: </h2>
+{% csrf_token %}
+<form class="row g-3">
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Address 2</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="City and 2 Letter State">
+    </div>
+    <div class="col-12">
+      <button onclick="    realestate_app/attom_location "    type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+{% endblock page_header %}

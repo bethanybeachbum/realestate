@@ -1,0 +1,45 @@
+<!--   Contracts.html  -->
+{% extends "realestate_app/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+<h1>List of Real Estate Contracts</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+  <ul class=" bg-info p-2" style="--bs-bg-opacity: .15;" >
+    {% for contract in contracts %}
+      <ul><h5>
+      <a  href="{% url 'realestate_app:contract' contract.id %}"> {{ contract }} </a>
+    </h5></ul>
+    {% empty %}
+    <li> <h4>No contracts have been added yet.</h4></li>
+    {% endfor %}
+  </ul>
+<!--
+<div class="callout"> -->
+<!--
+<h5 background-color:indigo-100 ><a class="btn btn-outline-info" href="{% url 'realestate_app:new_contract' %}"> Add a new contract</a></h5>
+</div>
+<p>Back to <a class="btn btn-outline-dark" href="/">Home</a></p>
+-->
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <a class="btn btn-outline-primary" href="{% url 'realestate_app:new_contract' %}">New Contract</a>
+  <a class="btn btn-outline-success" href="/">Back to Home</a>
+</div>
+
+
+<!--
+<p></p>
+<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+  <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btncheck1">Add New Contract</label>
+
+  <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btncheck2">Back to Home</label>
+
+</div>
+-->
+  {% endblock content %}

@@ -1,0 +1,24 @@
+<!-- new_action.html -->
+{% extends "realestate_app/base.html"   %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+    {% block title %}<h2>New Action Form</h2>{% endblock %}
+    {% endblock page_header %}
+
+  {% block content %}
+  <p>Add new action:</p>
+
+  <p><a href="{% url 'realestate_app:contract' contract.id %}">{{contract}} </a></p> 
+
+  <p>Add a new contract action:</p>
+  <form action="{% url 'realestate_app:new_action' contract.id %}" method='post' class="'form" >
+    <!-- Prevents cross-site request forgery -->
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {%  bootstrap_button button_type="submit" content="OK"  %}
+  </form>
+
+  <p>Back to <a href="/">Home</a></p>
+  {% endblock content %}
+

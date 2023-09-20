@@ -1,0 +1,41 @@
+<!-- INDEX.HTML -->
+
+{% extends "realestate_app/base.html" %}
+
+{% block page_header %}
+    <div class="p-3 mb-2 bg-secondary bg-gradient  text-white">
+        <h1 class="display-3">Track Your Real Estate Contracts</h1>
+
+        <p class="lead">Input your own contracts, and keep a list of the actions needed to close the deal.  You can update contact and action information and set reminders.</p>
+
+        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}" role="button">Register &raquo;</a>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 bg-success p-2" style="--bs-bg-opacity: .25;" >
+                <p></p>
+                <p class="lead">Number of Contracts in local Database: </strong>{{  num_contracts }} </p>
+                <p class="lead">Number of Persons in local Database: </strong>{{ num_persons }}</p>
+                <p class="lead">Number of My Actions:  </p>
+                <p class="lead">My Actions Due Today:  {{ num_my_actions }}</p>
+                <p class="lead">New Contracts in my area in Last 24 Hours:  </p>
+                <p class="lead">Contracts Closed in my area in Last 24 Hours:  </p>
+            </div>
+            <div class="w-25 p-3" style="width: 120px; height: 120px ">  <!-- w-50 img-fluid   img-fluid col-md-6 -->
+                <img src="../static/index-bg.jpeg" class="img-responsive" style="height:300px; ">
+            </div>
+        </div>
+    </div>
+    <br>    
+    <div class="row"> 
+        <div class="col-md-8 bg-success p-2" style="--bs-bg-opacity: .5;" > 2/3rds column</div>
+        <div class="col-md-4 bg-success p-2" style="--bs-bg-opacity: .75;" > 2/3rds column</div>
+    </div>    
+    {% endblock page_header %}
+
+
+
+
+
+

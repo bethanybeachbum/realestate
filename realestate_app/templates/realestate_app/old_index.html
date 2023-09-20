@@ -1,0 +1,25 @@
+{% load static %}
+
+{% block content %}
+<head>
+    {% block title %}<title>Real Deal</title>{% endblock %}
+</head>
+
+<h1> Real Deal Home Page </h1>
+
+<!-- Replaced: <p>Tracking Managing and Closing Realestate Transactions</p>  -->
+
+<p>The Real Deal helps you track and complete the actions to quickly close real estate deals. </p> <h2>Dynamic Content</h2>
+<ul>
+    <li><strong>Number of Contracts: </strong>{{  num_contracts }}</li> 
+    <li><strong>Number of Contract Actions: </strong>{{num_actions}}</li>
+    <li><strong>Number of Persons: </strong>{{ num_persons }}</li>
+    <li><strong>Nunmber of Actions:  </strong></li>
+    <li><strong>My Actions Due Today:  {{ num_my_actions }}</strong></li>
+    <li><strong>New Contracts in Last 24 Hours:  </strong></li>
+    <li><strong>Contracts Closed in Last 24 Hours:  </strong></li>
+ 
+</ul>
+
+<img src="{% static 'Flow.png' %}" alt="" width="500" height="300">
+{% endblock content %}

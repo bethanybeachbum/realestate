@@ -1,0 +1,23 @@
+<p>
+    
+    {% if user.is_authenticated %}
+          Hello, {{ user.username }} - 
+          <a href="{% url 'users:logout' %}">Log out</a> -
+        {% else %}
+        <a href="{% url 'users:register' %}">Register  </a> -
+        <a href="{% url 'users:login' %}">Log in  </a> - 
+        {% endif %}  
+    <a href="{% url 'realestate_app:index' %}">Realestate App</a>  - 
+    <a href="{% url 'realestate_app:contracts' %}">Contracts</a>  - 
+    <a href="{% url 'realestate_app:contractlist' %}">Contract List</a>  - 
+    <a href="{% url 'realestate_app:actions' %}">Contract Actions</a>  - 
+    <a href="{% url 'realestate_app:persons' %}">Persons</a>  - 
+    <a href="{% url 'realestate_app:new_contract' %}">Add a New Contract</a>  - 
+    <a href="{% url 'realestate_app:about' %}">About</a>  -
+    
+    
+</p>
+
+
+<p>Today is {{today}}</p>
+

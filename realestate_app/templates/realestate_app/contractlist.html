@@ -1,0 +1,34 @@
+{% extends "realestate_app/base.html" %}
+
+<!--   contractlist.html  -->
+
+<head>
+    {% block title %}<title>Contract List</title>{% endblock %}
+</head>
+<body>
+    <!-- Django Tags perform programming logic inside brackets.  -->
+    {% block content %}
+  <h1> List of Contracts</h1>
+
+  <ul>
+    {% for each in contractlist %}
+      <li>{{ each.propertyAddress }} - Sold by:  {{ each.seller }} to {{each.buyer }}</li>
+    {% endfor %}
+  </ul>
+
+
+<!-- Next step -->
+<ul>
+{% for each in contractlist %}
+  <h2>{{ each.propertyaddress }} {{ each.seller }}</h2>
+  
+  <p>Contract Date: {{ each.buyer}}</p>
+  {% endfor %}
+</ul>
+  <p>Back to <a href="/">Home</a></p>
+  
+
+  {% endblock content %}
+</body>
+
+</html>

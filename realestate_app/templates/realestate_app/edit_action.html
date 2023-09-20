@@ -1,0 +1,34 @@
+<!-- edit_action.html -->
+
+{% extends "realestate_app/base.html"   %}
+{% load django_bootstrap5 %}
+<head>
+    {% block title %}<title>Edit Action Form</title>{% endblock %}
+</head>
+<body>
+
+  {% block content %}
+  <h5>Edit Action Form</h5>
+
+
+  <p><a class="btn btn-outline-success btn-sm" href="{% url 'realestate_app:contract' contract.id %}">{{contract}} </a></p>
+
+  <p>Edit an action for a specific contract</p>
+
+  <form class="form" action="{% url 'realestate_app:edit_action' action.id %}" method='post' >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-outline-success btn-sm" name="Submit">Save Action Changes</button>
+  </form>
+
+  <p>Back to <a class="btn btn-outline-success btn-sm" href="/">Home</a></p>
+  {% endblock content %}
+
+
+    <!--    -->
+
+
+</body>
+
+</html>
+

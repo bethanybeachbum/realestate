@@ -1,0 +1,61 @@
+<!-- contract.HTML -->
+
+{% extends "realestate_app/base.html" %}
+{% load static %}
+
+{% block page_header %}
+<h4>All pending actions for the following contract:</h4>
+<h4>{{  contract  }} </h4>
+{% endblock page_header %}
+
+
+{% block content %}
+<h5>Address:</h5>
+
+<!-- IF ADDRESS > 0 then: DISPLAY ADDRESS -->
+{% for each in address %}
+
+    <div class="card">
+        <h5 class="card-header">
+        {{each.Address1 }}
+        {{each.Address2 }}
+        {{each.City}}
+        {{each.State}}
+        {{each.Zip}}
+        </h5>
+     {% empty %}
+    </div>
+
+{% endfor %}
+
+<hr class="bg-success border-2 border-top border-success">
+
+<h5>Actions: </h5>
+<p>
+    <a class="btn btn-outline-success btn-sm" href="{% url 'realestate_app:new_action' contract.id   %}"> Add a new action</a>
+</p>
+
+
+    {% for action in actions  %}
+    <div class="card">
+        <h5 class="card-header">
+            {{action.date_add }}
+            {{action.actionDueDate }}  <!-- |date:'Md, Y H:i'-->
+            <small><a class="btn btn-outline-success btn-sm" href="{% url 'realestate_app:edit_action' action.id %}">Edit action</a></small>
+        </h5>
+        <div class="card-body">
+            {{action.action|linebreaks }}
+            {{action.actionPerson|linebreaks }}
+            {{action.actionNextStep|linebreaks }}
+        </div>
+    </div>
+    {% empty %}
+        <p> No actions have been added yet.</p>
+    {% endfor %}
+
+<p>Back to <a href="/" class="btn btn-outline-primary btn-sm" >Home</a></p>
+<p>Remember:  The Real Deal helps you track and complete the actions to quickly close real estate deals. </p>
+
+{% endblock content %}
+
+
