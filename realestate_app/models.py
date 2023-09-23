@@ -17,7 +17,7 @@ class Contract(models.Model):
     city = models.CharField(max_length=30, help_text="Enter City")
     state = models.CharField(max_length=2, help_text="Enter Two Letter State")
     zip = models.CharField(max_length=9, help_text="Enter Zip Code")
-    addDate = models.DateField(auto_now_add=True, null=True, verbose_name="created at")
+    addDate = models.DateField(auto_now_add=True, verbose_name="created at")
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     class Meta:
         ordering = ["seller"]
@@ -37,11 +37,11 @@ class ContractDetail(models.Model):
     mortgageAmount = models.PositiveBigIntegerField(default=0, help_text= "Enter Mortgage Amount")
     escrowAmount = models.PositiveBigIntegerField(help_text= "Enter Escrow Amount")
     closedContract = models.BooleanField(default=False)
-    comments = models.TextField(help_text = "Enter pertinent information")
+    comments = models.TextField(help_text="Enter pertinent information")
     updatedAt = models.DateField(auto_now=True, verbose_name="updated at")
-    closeDate = models.DateField(null = True, help_text="Expected close date:")
+    closeDate = models.DateField(null=True, help_text="Expected close date:")
     closingDocumentsPDF = models.FileField(upload_to='closingdocs/%Y/%m/%d', help_text = "Attach closing documents", blank=True, null=True)
-    closedContractComments = models.TextField(default = 'No Comment', help_text="Final thoughts?")
+    closedContractComments = models.TextField(default='No Comment', help_text="Final thoughts?")
 
     class Meta:
         ordering = ["comments"]
@@ -53,6 +53,21 @@ class ContractDetail(models.Model):
 
 
 class Person(models.Model):
+    ROLES = [
+      ("Inspection", "Inspection"),
+      ("Survey", "Survey"),
+      ("TitleSearch", "titleSearch"),
+      ("TermiteInspection", "TermiteInspection"),
+      ("TitleInsurance", "TitleInsurance"),
+      ("Lawyer", "Lawyer"),
+      ("MortgageLoan", "MortgageLoan"),
+      ("MoldInspection", "MoldInspection"),
+      ("RadonInspection", "RadonInspection"),
+      ("HandyMan", "HandyMan"),
+      ("Other_Action_1", "Other_Action_1"),
+      ("Other_Action_2", "Other_Action_2"),
+      ("Other_Action_3", "Other_Action_3")
+    ]
     contracts = models.ManyToManyField(Contract) #, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=30, default = None, blank=True,  null = True, help_text="First Name")
     last_name = models.CharField(max_length=30,  default = None,  blank=True, null = True, help_text="Last Name")
@@ -64,7 +79,7 @@ class Person(models.Model):
     city = models.CharField(max_length=30,  default = None, blank=True,  null = True, help_text="City")
     state = models.CharField(max_length=30,  default = None, blank=True,  null = True, help_text="State")
     zip = models.CharField(max_length=10,  default = None, blank=True, null = True, help_text="Zip Code")
-    role = models.CharField(max_length=10, default = None,  blank=True, null = True, help_text="What is this person's role?")
+    role = models.CharField(choices=ROLES, max_length=17, default = None,  blank=True, null = True, help_text="What is this person's role?")
 
     class Meta:
         ordering = ["last_name"]
@@ -77,20 +92,20 @@ class Person(models.Model):
 
 class Action(models.Model):
     ROLES = [
-    ("Inspection", "Inspection"),
-    ("Survey", "Survey"),
-    ("TitleSearch", "titleSearch"),
-    ("TermiteInspection", "TermiteInspection"),
-    ("TitleInsurance", "TitleInsurance"),
-    ("Lawyer", "Lawyer"),
-    ("MortgageLoan", "MortgageLoan"),
-    ("MoldInspection", "MoldInspection"),
-    ("RadonInspection", "RadonInspection"),
-    ("HandyMan", "HandyMan"),
-    ("Other_Action_1", "Other_Action_1"),
-    ("Other_Action_2", "Other_Action_2"),
-    ("Other_Action_3", "Other_Action_3")
-]
+      ("Inspection", "Inspection"),
+      ("Survey", "Survey"),
+      ("TitleSearch", "titleSearch"),
+      ("TermiteInspection", "TermiteInspection"),
+      ("TitleInsurance", "TitleInsurance"),
+      ("Lawyer", "Lawyer"),
+      ("MortgageLoan", "MortgageLoan"),
+      ("MoldInspection", "MoldInspection"),
+      ("RadonInspection", "RadonInspection"),
+      ("HandyMan", "HandyMan"),
+      ("Other_Action_1", "Other_Action_1"),
+      ("Other_Action_2", "Other_Action_2"),
+      ("Other_Action_3", "Other_Action_3")
+    ]
     contract = models.ForeignKey(Contract, on_delete=models.CASCADE)
     date_add = models.DateTimeField(auto_now_add=True, verbose_name="created at")
     action = models.CharField(max_length=30, help_text= "What is the specific action to be accomplished?", choices = ROLES)

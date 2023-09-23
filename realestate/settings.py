@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # My apps
     'realestate_app',
     'users',
+    'attom',
 
     # Third party apps
     'django_bootstrap5',
