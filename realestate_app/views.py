@@ -39,7 +39,7 @@ def contracts(request):
   """Show all contracts that are not closed
     closedYesNo == No
     """
-  contracts = Contract.objects.filter(owner=request.user).order_by('AddDate')
+  contracts = Contract.objects.filter(owner=request.user).order_by('addDate')
   context = {'contracts': contracts}
   return render(request, 'realestate_app/contracts.html', context)
 

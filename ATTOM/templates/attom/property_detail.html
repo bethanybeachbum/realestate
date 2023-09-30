@@ -1,22 +1,57 @@
-<!DOCTYPE html>
+{% extends "attom/base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DigitalOcean Droplets</title>
+    <title>Property Detail</title>
     <link crossorigin="anonymous"
           href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
           integrity="sha256-8B1OaG0zT7uYA572S2xOxWACq9NXYPQ+U5kHPV1bJN4="
           rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/png" href="https://assets.digitalocean.com/logos/favicon.png"/>
+    <div class="column">
+        <img src="{% static 'logo.png' %}" width="150" height="40">
+        <h5>Search Results: </h5>
+    </div>
 </head>
 <body>
 <nav aria-label="main navigation" class="navbar is-light" role="navigation">
     <div class="navbar-brand">
         <div class="navbar-item">
-            <img atl="DigitalOcean" src="https://assets.digitalocean.com/logos/DO_Logo_icon_blue.png"
-                 style="margin-right: 0.5em;">Droplets
+            <img src="{% static 'logo.png' %}" width="100" height="40"
+                 style="margin-right: 0.5em;">Search Results
         </div>
     </div>
 </nav>
+
+<table class="table is-fullwidth is-striped is-bordered">
+    <thead>
+    <tr>
+        <th>Property Street Address</th>
+        <th>Attom ID</th>
+        <th>Lot Size in Acreage</th>
+        <th>Year Built</th>
+        <th>Property Type</th>
+        <th>Field 6</th>
+        <th>Field 7</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for each in property %}
+    <tr>
+        <th>{{ property_address }}</th>
+        <td>{{ property_identifier }}</td>
+        <td>{{ property_lot_size }}</td>
+        <td>{{ property_yearbuilt}}</td>
+        <td>{{ property_propertyType}}</td>
+        <td>{{ property.1 }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 </body>
 </html>
+{% endblock content %}

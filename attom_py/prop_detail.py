@@ -7,6 +7,7 @@ import http.client
 import pprint
 # import rich
 
+
 conn = http.client.HTTPSConnection("api.gateway.attomdata.com")
 
 headers = {
@@ -45,3 +46,4 @@ print(json.dumps(parsed, indent=4))
 
 print('$$$$$$$$$$$$$$$')
 # rich.pretty.pprint(data.headers)
+

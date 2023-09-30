@@ -2,9 +2,11 @@
 
 # Import the path function needed when mapping URLs to views
 from django.urls import path, include
+# from django.conf.urls import url
 
 # Import views model.  Dot tells Pyton to import from same dir
 from . import views
+
 app_name = 'realestate_app'
 
 
